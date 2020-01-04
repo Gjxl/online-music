@@ -35,7 +35,7 @@ public class CommentController {
         //评论内容检查
         StringBuffer message = new StringBuffer("");
         if (!commentService.isCorrectComment(commentMap, message)) {
-            return new ResponseEntity().message(message.toString());
+            throw new ApplicationException(message.toString());
         }
         //1.封装数据到Comment实体中
         Comment comment = new Comment(commentMap);
